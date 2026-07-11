@@ -1,0 +1,5 @@
+﻿model_id,model,top_rank_probability,top_rank_probability_pct
+block_persistence_24h,24h block persistence,0.4819,48.19
+seasonal_naive_24h,24h seasonal naive,0.3843,38.43
+past_same_hour_mean,Past same-hour mean,0.1145,11.450000000000001
+ridge_calendar,Ridge calendar,0.0193,1.9300000000000002

@@ -1,0 +1,7 @@
+﻿variable,role,dtype,unit_status,validation
+datetime,시간키,datetime,미확정(KST 추정),정시·중복·간격 검사
+demand,예측표적,integer,packaged unit(원 단위 미확정),비음수·원천 lineage 필요
+temperature,기상설명변수,float,°C로 추정,물리범위·원천 확인
+wind_speed,기상설명변수,float,m/s로 추정,0 이상
+precipitation,기상설명변수,float,mm로 추정,0 이상·0 과다 분포
+humidity,기상설명변수,float,%로 추정,0~100

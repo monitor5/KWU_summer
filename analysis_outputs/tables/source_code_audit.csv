@@ -1,0 +1,11 @@
+﻿area,finding,severity,required_action
+패키지 데이터,sample_data.csv와 팀 폴더 data.csv가 바이트 단위로 동일한 96시간 복제본,Critical,전체 원천·중간·merged 데이터와 체크섬 제공
+reproduce_analysis.py,단일 마지막 날만 평가하고 1-step과 day-ahead 조건을 한 표에 혼합,High,이 노트북의 3-fold 24h day-ahead 표로 대체
+reproduce_analysis.py,체크인된 표·그림 전체를 실제로 재생성하지 못함,High,analysis_outputs의 모든 표·그림을 본 노트북에서 생성
+KPX 단위시간 변경.py,문자열 연결로 total을 만들지만 결과행에 저장하지 않아 집계가 반영되지 않음,Critical,수치형 resample과 총량보존 테스트로 재작성
+가중합.py,기상 결측을 0으로 치환하고 미매칭 관측소를 조용히 제외,High,원시 결측률·대체로그·매칭률·민감도 보고
+가중합.py,복수 관측소 지역에 지역 전체 가중치를 반복 적용할 위험,High,행정코드 기반 조인과 관측소 내 가중치 재배분
+train.ipynb,merged data.csv와 best2.json이 없고 실행순서가 뒤섞이며 GridSearch가 중단됨,Critical,빈 커널 Run All·고정 seed·환경 버전·완전한 데이터 제공
+train.ipynb,2025 validation을 튜닝·선택·평가에 재사용하고 독립 test가 없음,High,개발 rolling-origin과 완전 격리 final test
+train.ipynb,day-ahead에서 당일 실제 lag-1/rolling과 실제 미래 관측기상을 사용할 위험,Critical,발행시각 기준 feature contract와 예보기상 vintage 사용
+표적 정의,demand 단위·배율·발전단/판매단 의미가 패키지에서 확정되지 않음,High,원천행→변환→merged 값 lineage 테스트

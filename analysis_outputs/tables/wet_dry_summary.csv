@@ -1,0 +1,3 @@
+﻿period,n,demand_mean,demand_median,precipitation_sum
+dry_hour,64,703227.671875,701537.5,0.0
+wet_hour,32,733910.3125,742097.5,27.2

@@ -1,0 +1,15 @@
+﻿check,observed,expected,passed
+row_count,96,96,True
+start_timestamp,2025-04-21 00:00:00,2025-04-21 00:00:00,True
+end_timestamp,2025-04-24 23:00:00,2025-04-24 23:00:00,True
+expected_hour_count,96,96,True
+missing_cell_count,0,0,True
+infinite_numeric_count,0,0,True
+duplicate_row_count,0,0,True
+duplicate_timestamp_count,0,0,True
+missing_timestamp_count,0,0,True
+non_hourly_gap_count,0,0,True
+negative_demand_count,0,0,True
+negative_wind_count,0,0,True
+negative_precipitation_count,0,0,True
+humidity_outside_0_100_count,0,0,True

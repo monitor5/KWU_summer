@@ -1,0 +1,10 @@
+﻿coverage_item,value
+observed_hours,96.0
+calendar_days,4.0
+months,1.0
+unique_weekdays,4.0
+weekend_hours,0.0
+hours_with_precipitation_gt_0,32.0
+hours_with_precipitation_ge_1,11.0
+total_precipitation,27.199999999999996
+max_single_day_precipitation_share_pct,99.48529411764707
