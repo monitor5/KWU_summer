@@ -1,0 +1,55 @@
+df = pd.read_csv("beverage_choices.csv")
+print(df.head())
+print(df.shape) # 예상: (200, 3)
+print(df.info())
+
+from sklearn.model_selection import train_test_split
+X = df[["temp", "time_period"]] # 주의: time_period는 아직 문자열
+y = df["choice"]
+X_train, X_test, y_train, y_test = train_test_split(
+X, y, test_size=0.2, random_state=42)
+
+#인코딩
+from sklearn.preprocessing import LabelEncoder
+le = LabelEncoder()
+X_train["time_period"] = le.fit_transform(X_train["time_period"])
+X_test["time_period"] = le.transform(X_test["time_period"])
+
+print(y.value_counts())
+
+import matplotlib.pyplot as plt
+plt.scatter(df[df["choice"]==0]["temp"], [0]*sum(df["choice"]==0),
+c="teal", label="Ice")
+plt.scatter(df[df["choice"]==1]["temp"], [1]*sum(df["choice"]==1),
+c="orange", label="Hot")
+plt.xlabel("Temperature (°C)")
+plt.ylabel("Choice")
+plt.legend()
+plt.show()
+
+#전체 지니 불순도
+ice_count = sum(y_train == 0) # 훈련 데이터 아이스 개수
+hot_count = sum(y_train == 1) # 훈련 데이터 핫 개수
+total = len(y_train)
+p_ice = ice_count / total
+p_hot = hot_count / total
+gini_parent = 1 - (p_ice**2 + p_hot**2)
+print(f"Gini(parent) = {gini_parent:.4f}")
+
+#기온 >= 22
+threshold = 22
+left = y_train[X_train["temp"] < threshold] # 기온 < 22
+right = y_train[X_train["temp"] >= threshold] # 기온 >= 22
+# 왼쪽 자식 지니
+p_ice_left = sum(left == 0) / len(left)
+p_hot_left = sum(left == 1) / len(left)
+gini_left = 1 - (p_ice_left**2 + p_hot_left**2)
+# 오른쪽 자식 지니
+p_ice_right = sum(right == 0) / len(right)
+p_hot_right = sum(right == 1) / len(right)
+gini_right = 1 - (p_ice_right**2 + p_hot_right**2)
+# 가중 평균 지니
+gini_children = (len(left)/total)*gini_left + (len(right)/total)*gini_right
+# 정보 이득
+info_gain = gini_parent - gini_children
+print(f"Info Gain (temp >= 22°C) = {info_gain:.4f}")
